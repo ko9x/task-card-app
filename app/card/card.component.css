@@ -1,12 +1,22 @@
 .card {
     border-radius: 0;
+    cursor: pointer;
 }
+
 
 .card,
 .card-footer {
     background-color: #FFFFA5;
     border: none;
 }
+
+.card.completed,
+.card.completed .card-footer,
+.card.completed  {
+    background-color: #EEE;
+    color: #CCC;
+}
+
 .card-footer {
     text-align: right;
 }
@@ -14,4 +24,26 @@
 i {
     color: #CC0000;
     padding-right: .5rem;
+}
+
+.card-footer #hideTask {
+   text-align: left;
+   margin-left: -20px;
+}
+
+#hideTask{
+    color: red;
+}
+
+
+.completedStatus {
+    padding-left: 20px;
+}
+
+.fa-minus {
+    color: red;
+}
+
+.fa-check {
+    color: #CCC;
 }

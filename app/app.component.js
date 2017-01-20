@@ -12,16 +12,20 @@ var core_1 = require('@angular/core');
 var task_1 = require('./model/task');
 var AppComponent = (function () {
     function AppComponent() {
-        this.tasks = [
-            new task_1.Task("buy a monkey", false),
-            new task_1.Task("teach monkey to kill my enemies", false)
-        ];
+        this.tasks = [];
+        this.currentTask = new task_1.Task(null, false, false);
     }
+    AppComponent.prototype.addTask = function () {
+        var task = new task_1.Task(this.currentTask.content, this.currentTask.completed, this.currentTask.hidden);
+        this.tasks.push(task);
+        this.currentTask.content = null;
+    };
     AppComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'my-app',
-            templateUrl: 'app.component.html'
+            templateUrl: 'app.component.html',
+            styleUrls: ['app.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
