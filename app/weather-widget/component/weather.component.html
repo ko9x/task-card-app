@@ -1,0 +1,36 @@
+<div class="card" [ngStyle]="setStyles()">
+    <div class="card-header" [class.invisible]="!dataReceived">
+        <div class="col-xs-8" id="location-wrapper">
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{currentLocation.city}}, {{currentLocation.state}}</p>
+        </div>
+        <div class="col-xs-4 text-xs-right" id="tempDisplay">
+            <h1 (click)="toggleTempUnits()">{{weatherData.temp | tempUnit: currentTempUnit | number: '.0-0'}}&deg; </h1>
+        </div>
+    </div>
+    <div class="card-block">
+        <div id="indicator" [hidden]="dataReceived">
+            <i class="fa fa-circle-o-notch fa-spin fa-4x fa-fw"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
+        <canvas id="icon" [hidden]="!dataReceived"></canvas>
+        <p>{{weatherData.summary}}</p>
+        <p (click)="ngOnInit()" id="refresh" [hidden]="!dataReceived"><i class="fa fa-refresh" aria-hidden="true"></i></p>
+        <small [hidden]="!dataReceived" class="text-muted">last refresh at {{objDate | date :'shortTime'}}</small>
+        
+    </div>
+    <div class="card-footer" [class.invisible]="!dataReceived">
+        <div class="row" id="detail-row">
+            <div (click)="toggleSpeedUnits()" class="col-xs-5">
+                <p>Wind</p>
+                <p class="unit-label">{{weatherData.wind | speedUnit: currentSpeedUnit }}</p>
+            </div>
+            <div class="col-xs-5 offset-xs-2">
+                <p>Humidity</p>
+                <p>{{weatherData.humidity | percent }}</p>
+            </div>
+        </div>
+        <div class="row" id="helper-row">
+            <small class="text-muted">click to convert temperature or wind speed</small>
+        </div>
+    </div>
+</div>
