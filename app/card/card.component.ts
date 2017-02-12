@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Task } from '../model/task';
+import { AppComponent } from '../app.component';
 
 @Component({
     moduleId: module.id,
@@ -9,13 +10,16 @@ import { Task } from '../model/task';
 })
 
 export class CardComponent { 
-  @Input() task: Task;
+  @Input() private task: Task;
+
+ 
 
   statusToggle() {
     this.task.completed = !this.task.completed;
   }
-  hideCard() {
-    this.task.hidden = !this.task.hidden;
+
+  deleteCard() {
+    this.task.toDelete = !this.task.toDelete;
   }
 
 }

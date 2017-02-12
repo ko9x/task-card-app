@@ -45,7 +45,6 @@ var WeatherComponent = (function () {
                 _this.weatherData.wind = weather["currently"]["windSpeed"],
                 _this.weatherData.humidity = weather["currently"]["humidity"],
                 _this.weatherData.icon = weather["currently"]["icon"];
-            console.log("Weather ", _this.weatherData);
             _this.setIcon();
             _this.dataReceived = true;
             _this.objDate = Date.now();
@@ -57,7 +56,6 @@ var WeatherComponent = (function () {
             .subscribe(function (location) {
             _this.currentLocation.city = location["results"][1]["address_components"][0]["long_name"];
             _this.currentLocation.state = location["results"][1]["address_components"][2]["short_name"];
-            console.log(location);
         }, function (err) { return console.error(err); });
     };
     WeatherComponent.prototype.toggleTempUnits = function () {

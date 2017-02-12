@@ -52,7 +52,6 @@ export class WeatherComponent implements OnInit {
                 this.weatherData.wind = weather["currently"]["windSpeed"],
                 this.weatherData.humidity = weather["currently"]["humidity"],
                 this.weatherData.icon = weather["currently"]["icon"]
-                console.log("Weather ", this.weatherData);
                 this.setIcon();
                 this.dataReceived = true;
                 this.objDate = Date.now();
@@ -65,7 +64,6 @@ export class WeatherComponent implements OnInit {
             .subscribe(location => {
                 this.currentLocation.city = location["results"][1]["address_components"][0]["long_name"];
                 this.currentLocation.state = location["results"][1]["address_components"][2]["short_name"];
-                console.log(location);
             },
             err => console.error(err));
     }

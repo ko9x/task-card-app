@@ -1,9 +1,9 @@
 "use strict";
 var Task = (function () {
-    function Task(content, completed, hidden) {
+    function Task(content, completed, toDelete) {
         this.content = content;
         this.completed = completed;
-        this.hidden = hidden;
+        this.toDelete = toDelete;
     }
     return Task;
 }());

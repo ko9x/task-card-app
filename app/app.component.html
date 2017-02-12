@@ -4,8 +4,7 @@
             <form class="form-inline" (ngSubmit)="addTask()" #taskForm="ngForm">
                 <div class="form-group">
                     <label for="content-field" class="sr-only"></label>
-                    <input type="text" id="content-field" class="form-control" required placeholder="enter a task..." [(ngModel)]="currentTask.content"
-                        name="content">
+                    <input type="text" id="content-field" class="form-control" required placeholder="enter a task..." [(ngModel)]="currentTask.content" name="content">  
                 </div>
                 <button type="submit" class="btn btn-primary" [disabled]="taskForm.form.invalid"><i class="fa fa-plus" aria-hidden="true"></i>Add Task</button>
             </form>
@@ -16,8 +15,8 @@
             <weather-widget></weather-widget>
         </div>
         <div class="col-md-8">
-            <app-card *ngFor="let task of tasks" [task]="task"></app-card>
-            <p *ngIf="tasks.length == 0">Add some new notes, why dontcha!</p>
+            <app-card *ngFor="let task of tasks" [task]="task" (click)="onClicked(task)"></app-card>
+            <p *ngIf="tasks.length == 0">Add some new notes!</p>
         </div>
     </div>
 </div>

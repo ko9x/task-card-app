@@ -11,8 +11,7 @@
 }
 
 .card.completed,
-.card.completed .card-footer,
-.card.completed  {
+.card.completed .card-footer {
     background-color: #EEE;
     color: #CCC;
 }
@@ -26,12 +25,12 @@ i {
     padding-right: .5rem;
 }
 
-.card-footer #hideTask {
+.card-footer #deleteButton {
    text-align: left;
    margin-left: -20px;
 }
 
-#hideTask{
+#deleteButton{
     color: red;
 }
 

@@ -16,9 +16,15 @@ var AppComponent = (function () {
         this.currentTask = new task_1.Task(null, false, false);
     }
     AppComponent.prototype.addTask = function () {
-        var task = new task_1.Task(this.currentTask.content, this.currentTask.completed, this.currentTask.hidden);
+        var task = new task_1.Task(this.currentTask.content, this.currentTask.completed, this.currentTask.toDelete);
         this.tasks.push(task);
         this.currentTask.content = null;
+    };
+    AppComponent.prototype.onClicked = function (task) {
+        var taskIndex = this.tasks.indexOf(task);
+        if (task.toDelete) {
+            this.tasks.splice(taskIndex, 1);
+        }
     };
     AppComponent = __decorate([
         core_1.Component({
