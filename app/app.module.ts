@@ -10,6 +10,8 @@ import { WeatherComponent } from './weather-widget/component/weather.component';
 import { SpeedUnitPipe } from './weather-widget/pipe/speed-unit.pipe';
 import { TempUnitPipe } from './weather-widget/pipe/temp-unit.pipe';
 
+import {  TaskService } from './service/task.service';
+
 
 @NgModule ({
     imports: [ 
@@ -25,6 +27,9 @@ import { TempUnitPipe } from './weather-widget/pipe/temp-unit.pipe';
         SpeedUnitPipe,
         TempUnitPipe
          ],
+    providers: [
+        TaskService
+        ],     
     bootstrap: [ AppComponent ]
 })
 

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Task } from '../model/task';
 import { AppComponent } from '../app.component';
+import {  TaskService } from '../service/task.service';
 
 @Component({
     moduleId: module.id,
@@ -10,6 +11,9 @@ import { AppComponent } from '../app.component';
 })
 
 export class CardComponent { 
+
+  constructor(private taskService: TaskService) { }
+
   @Input() private task: Task;
 
  
@@ -20,6 +24,11 @@ export class CardComponent {
 
   deleteCard() {
     this.task.toDelete = !this.task.toDelete;
+    this.taskService.removeTask(this.task);
   }
+
+  
+
+
 
 }

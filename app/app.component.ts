@@ -2,30 +2,33 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CardComponent } from './card/card.component';
 
+import { TaskService } from './service/task.service';
 import { Task } from './model/task';
 
 @Component({
     moduleId: module.id,
     selector: 'my-app',
     templateUrl: 'app.component.html',
-    styleUrls: [ 'app.component.css' ]
+    styleUrls: ['app.component.css']
 })
 
-export class AppComponent  { 
+export class AppComponent {
+
+    constructor(private taskService: TaskService) {}
+
     private tasks: Task[] = [];
     private currentTask = new Task(null, false, false);
 
 
     addTask() {
         let task = new Task(this.currentTask.content, this.currentTask.completed, this.currentTask.toDelete);
-        this.tasks.push(task);
+        this.taskService.addTask(task)
         this.currentTask.content = null;
+        this.getTask();
     }
 
-    onClicked(task: Task) {
-        const taskIndex = this.tasks.indexOf(task);
-        if(task.toDelete) {
-            this.tasks.splice(taskIndex, 1);
-        } 
+    getTask() {
+        this.tasks = this.taskService.getTask()
     }
+
 }

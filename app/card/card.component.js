@@ -10,14 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var task_1 = require('../model/task');
+var task_service_1 = require('../service/task.service');
 var CardComponent = (function () {
-    function CardComponent() {
+    function CardComponent(taskService) {
+        this.taskService = taskService;
     }
     CardComponent.prototype.statusToggle = function () {
         this.task.completed = !this.task.completed;
     };
     CardComponent.prototype.deleteCard = function () {
         this.task.toDelete = !this.task.toDelete;
+        this.taskService.removeTask(this.task);
     };
     __decorate([
         core_1.Input(), 
@@ -30,7 +33,7 @@ var CardComponent = (function () {
             templateUrl: 'card.component.html',
             styleUrls: ['card.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [task_service_1.TaskService])
     ], CardComponent);
     return CardComponent;
 }());

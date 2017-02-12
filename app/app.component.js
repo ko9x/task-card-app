@@ -9,22 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var task_service_1 = require('./service/task.service');
 var task_1 = require('./model/task');
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(taskService) {
+        this.taskService = taskService;
         this.tasks = [];
         this.currentTask = new task_1.Task(null, false, false);
     }
     AppComponent.prototype.addTask = function () {
         var task = new task_1.Task(this.currentTask.content, this.currentTask.completed, this.currentTask.toDelete);
-        this.tasks.push(task);
+        this.taskService.addTask(task);
         this.currentTask.content = null;
+        this.getTask();
     };
-    AppComponent.prototype.onClicked = function (task) {
-        var taskIndex = this.tasks.indexOf(task);
-        if (task.toDelete) {
-            this.tasks.splice(taskIndex, 1);
-        }
+    AppComponent.prototype.getTask = function () {
+        this.tasks = this.taskService.getTask();
     };
     AppComponent = __decorate([
         core_1.Component({
@@ -33,7 +33,7 @@ var AppComponent = (function () {
             templateUrl: 'app.component.html',
             styleUrls: ['app.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [task_service_1.TaskService])
     ], AppComponent);
     return AppComponent;
 }());

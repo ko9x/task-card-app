@@ -15,7 +15,7 @@
             <weather-widget></weather-widget>
         </div>
         <div class="col-md-8">
-            <app-card *ngFor="let task of tasks" [task]="task" (click)="onClicked(task)"></app-card>
+            <app-card *ngFor="let task of tasks" [task]="task" ></app-card>
             <p *ngIf="tasks.length == 0">Add some new notes!</p>
         </div>
     </div>

@@ -17,6 +17,7 @@ var card_component_1 = require('./card/card.component');
 var weather_component_1 = require('./weather-widget/component/weather.component');
 var speed_unit_pipe_1 = require('./weather-widget/pipe/speed-unit.pipe');
 var temp_unit_pipe_1 = require('./weather-widget/pipe/temp-unit.pipe');
+var task_service_1 = require('./service/task.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -34,6 +35,9 @@ var AppModule = (function () {
                 weather_component_1.WeatherComponent,
                 speed_unit_pipe_1.SpeedUnitPipe,
                 temp_unit_pipe_1.TempUnitPipe
+            ],
+            providers: [
+                task_service_1.TaskService
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 
